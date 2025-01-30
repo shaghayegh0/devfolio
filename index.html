@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaghayegh D. | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        };
+    </script>
+    <script>
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const button = document.getElementById('theme-toggle');
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                button.textContent = 'Join the Dark Side 🌙';
+            } else {
+                localStorage.setItem('theme', 'light');
+                button.textContent = 'Let There Be Light ☀️';
+            }
+        }
+    
+        // Apply default dark mode unless user changed it
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init();
+            const html = document.documentElement;
+            const button = document.getElementById('theme-toggle');
+            const theme = localStorage.getItem('theme');
+            
+            if (theme === 'light') {                
+                html.classList.remove('dark');
+                button.textContent = 'Let There Be Light ☀️';
+            } else { 
+                html.classList.add('dark');
+                button.textContent = 'Join the Dark Side 🌙';
+            }
+        });
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+            background-color: #111827; /* Dark mode default */
+            color: #ffffff;
+        }
+        .dark body {
+            background-color: #ffffff; /* Light mode */
+            color: #111827;
+        }
+        .light body {
+
+            background-color: #111827; /* Dark mode */
+            color: #ffffff;
+        }
+    </style>
+    
+</head>
+<body class="bg-gray-900 text-white">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-800 shadow-md p-4 flex justify-between items-center z-10">
+        <h1 class="text-xl font-bold ml-4">Shaghayegh D.</h1>
+        <ul class="flex space-x-6 mr-4">
+            <li><a href="#about" class="hover:text-gray-400 transition duration-300">About</a></li>
+            <li><a href="#projects" class="hover:text-gray-400 transition duration-300">Projects</a></li>
+            <li><a href="#skills" class="hover:text-gray-400 transition duration-300">Skills</a></li>
+            <li><a href="#certificates" class="hover:text-gray-400 transition duration-300">Certificates</a></li>
+            <li><a href="#contact" class="hover:text-gray-400 transition duration-300">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" onclick="toggleDarkMode()" class="bg-blue-500 dark:bg-gray-700 text-white px-4 py-2 rounded-lg">Let There Be Light ☀️</button>        
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="h-screen flex flex-col justify-center items-center text-center px-6">
+        <img src="photo.jpg" alt="Shaghayegh" class="w-40 h-40 rounded-full shadow-lg mb-4">
+        <h2 class="text-4xl font-bold">Hey, I'm Shaghayegh</h2>
+        <p class="mt-4 text-lg text-gray-300">
+            <span id="typing-text"></span>
+        </p>
+        <a href="#projects" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">View My Work</a>
+    </section>
+
+    <script>
+        var typed = new Typed("#typing-text", {
+            strings: ["Software Developer", "Tech Enthusiast", "Problem Solver"],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+    </script>
+    
+
+    
+    <!-- About Me Section-->
+    <section id="about" class="py-20 px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold">About Me</h2>
+        <p class="mt-4 text-gray-300 max-w-2xl mx-auto">I'm a fourth-year Computer Science student with a passion for software development, problem-solving, and innovative technologies.</p>
+    </section>
+    
+
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            opacity: 1 !important;
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold">Skills</h2>
+        <p class="mt-4 text-gray-300">Python | Java | JavaScript | React | SQL | Linux | Git</p>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-center">Projects</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
+                <h3 class="text-xl font-semibold">Project 1</h3>
+                <p class="text-gray-300 mt-2">A brief description of your project.</p>
+                <a href="#" class="text-blue-400 hover:underline">View Project</a>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
+                <h3 class="text-xl font-semibold">Project 2</h3>
+                <p class="text-gray-300 mt-2">Another project you’ve worked on.</p>
+                <a href="#" class="text-blue-400 hover:underline">View Project</a>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
+                <h3 class="text-xl font-semibold">Project 1</h3>
+                <p class="text-gray-300 mt-2">A brief description of your project.</p>
+                <a href="#" class="text-blue-400 hover:underline">View Project</a>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
+                <h3 class="text-xl font-semibold">Project 2</h3>
+                <p class="text-gray-300 mt-2">Another project you’ve worked on.</p>
+                <a href="#" class="text-blue-400 hover:underline">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub API Integration -->
+    <!-- <section id="github-projects" class="py-20 px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold">Latest GitHub Projects</h2>
+        <div id="github-projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>     -->
+
+    <!-- Certificates & Awards Section -->
+    <section id="certificates" class="py-20 px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold">Certificates & Awards</h2>
+        <div class="mt-8 flex flex-col items-center">
+            <img src="Coursera_Intro_to_GAI_page_1.png" alt="Certificate" class="w-80 shadow-lg rounded-lg">
+            <p class="mt-4 text-gray-300">Coursera - Introduction to Generative AI</p>
+        </div>
+    </section>
+    
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold">Contact</h2>
+        <p class="mt-4 text-gray-300">Let's connect!</p>
+        <div class="mt-4 flex justify-center space-x-4">
+            <a href="#" class="hover:text-blue-400 transition duration-300">GitHub</a>
+            <a href="#" class="hover:text-blue-400 transition duration-300">LinkedIn</a>
+            <a href="mailto:your.email@example.com" class="hover:text-blue-400 transition duration-300">Email</a>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <!-- <section id="contact" class="py-20 px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold">Contact</h2>
+        <p class="mt-4 text-gray-300">Let's connect!</p>
+
+        <form id="contact-form" class="mt-6 max-w-lg mx-auto">
+            <input type="text" id="name" placeholder="Your Name" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600 text-white" required>
+            <input type="email" id="email" placeholder="Your Email" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600 text-white" required>
+            <textarea id="message" placeholder="Your Message" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600 text-white" required></textarea>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Send</button>
+        </form>
+
+        <p id="response-message" class="mt-4 text-green-400"></p>
+    </section>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            const responseMessage = document.getElementById("response-message");
+
+            try {
+                const response = await fetch("http://localhost:5001/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, message })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    responseMessage.textContent = "Message sent successfully!";
+                    responseMessage.classList.add("text-green-400");
+                    document.getElementById("contact-form").reset();
+                } else {
+                    responseMessage.textContent = "Failed to send message.";
+                    responseMessage.classList.add("text-red-400");
+                }
+            } catch (error) {
+                responseMessage.textContent = "Error sending message.";
+                responseMessage.classList.add("text-red-400");
+            }
+        });
+    </script> -->
+
+    <!-- <script>
+        async function fetchGitHubRepos() {
+        const response = await fetch("http://localhost:5001/github");
+        const repos = await response.json();
+
+        const repoContainer = document.getElementById("github-projects");
+        repoContainer.innerHTML = repos.map(repo => `
+            <div class="bg-gray-800 p-4 rounded-lg">
+                <h3 class="text-xl font-bold">${repo.name}</h3>
+                <p class="text-gray-300">${repo.description || "No description available."}</p>
+                <a href="${repo.html_url}" target="_blank" class="text-blue-400 hover:underline">View on GitHub</a>
+            </div>
+        `).join("");
+    }
+
+    fetchGitHubRepos();
+
+    </script> -->
+
+    <!-- AI Chatbot UI -->
+    <div id="chat-container" class="fixed bottom-6 right-6 w-72 bg-gray-800 text-white p-4 rounded-lg shadow-lg hidden">
+        <h3 class="text-lg font-bold mb-2">Chat with Me 🤖</h3>
+        <div id="chat-box" class="h-40 overflow-y-auto border border-gray-700 p-2 mb-2 text-sm"></div>
+        <input id="chat-input" type="text" class="w-full p-2 text-black rounded-md" placeholder="Ask me anything...">
+        <button onclick="sendMessage()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md">Send</button>
+    </div>
+
+    <button id="chat-toggle" class="fixed bottom-6 right-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg">💬 Chat</button>
+
+    <script>
+        document.getElementById("chat-toggle").addEventListener("click", function () {
+            const chatContainer = document.getElementById("chat-container");
+            chatContainer.classList.toggle("hidden");
+        });
+
+        async function sendMessage() {
+            const inputField = document.getElementById("chat-input");
+            const chatBox = document.getElementById("chat-box");
+            const message = inputField.value.trim();
+            
+            if (!message) return;
+
+            chatBox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+            inputField.value = "";
+
+            try {
+                const response = await fetch("http://localhost:5001/chatbot", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                chatBox.innerHTML += `<p><strong>AI:</strong> ${data.response}</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            } catch (error) {
+                chatBox.innerHTML += `<p class="text-red-400"><strong>Error:</strong> Failed to get a response.</p>`;
+            }
+        }
+    </script>
+
+    
+</body>
+</html>
