@@ -6,7 +6,7 @@ import OpenAI from "openai";
 dotenv.config(); // Load environment variables
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.json());
@@ -16,7 +16,7 @@ const openai = new OpenAI({
 });
 
 app.get("/", (req, res) => {
-    res.send("✅ AI Chatbot Server is Running!");
+    res.send("AI Chatbot Server is Running!");
 });
 
 
@@ -29,18 +29,23 @@ app.post("/chatbot", async (req, res) => {
   }
 
   try {
+    console.log("🔹 Received message:", message);
+
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: message }],
     });
 
+    console.log("🔹 OpenAI Response:", completion);
+
     res.json({ response: completion.choices[0].message.content });
   } catch (error) {
-    console.error("❌ OpenAI API Error:", error);
-    res.status(500).json({ error: "Failed to fetch AI response" });
+    console.error("OpenAI API Error:", error);
+    res.status(500).json({ error: "Failed to fetch AI response", details: error.message });
   }
 });
 
+
 app.listen(PORT, () => {
-  console.log(`✅ AI Chatbot server running on http://localhost:${PORT}`);
+  console.log(`AI Chatbot server running on http://localhost:${PORT}`);
 });
