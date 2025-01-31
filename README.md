@@ -39,6 +39,6 @@ A dynamic, interactive portfolio showcasing projects, skills, and an AI-powered 
 
 
 ## 🔗 **Live Demo & Contact**  
-- **Portfolio Live:** [View Here](https://devfolio-aypj.onrender.com/)  
+- **Portfolio Live:** [View Here](https://github.com/shaghayegh0/devfolio)  
 - **LinkedIn:** [Shaghayegh D.](https://www.linkedin.com/in/shaghayegh-ds)  
 
