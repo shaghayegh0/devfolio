@@ -8,7 +8,12 @@ dotenv.config(); // Load environment variables
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-app.use(cors({ origin: "*" })); 
+app.use(cors({
+  origin: "https://shaghayegh0.github.io", // Allow requests from your frontend
+  methods: "GET, POST, OPTIONS", // Allowed methods
+  allowedHeaders: "Content-Type, Authorization" // Allowed headers
+}));
+
 app.use(express.json());
 
 const openai = new OpenAI({
