@@ -1,0 +1,13 @@
+#nav-links {
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+#nav-links:not(.hidden) {
+    max-height: 300px; 
+    opacity: 1;
+}
+
+#nav-links.sh

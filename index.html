@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -65,36 +66,71 @@
             color: #ffffff;
         }
     </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const navLinks = document.getElementById("nav-links");
+
+            function checkScreenSize() {
+                if (window.innerWidth >= 1024) {
+                    navLinks.classList.remove("hidden"); // Ensure visibility on desktop
+                } else {
+                    navLinks.classList.add("hidden"); // Hide menu on mobile until toggled
+                }
+            }
+
+            menuToggle.addEventListener("click", function () {
+                navLinks.classList.toggle("hidden");
+                navLinks.classList.toggle("flex");
+                navLinks.classList.toggle("flex-wrap");
+                navLinks.classList.toggle("justify-center");
+            });
+
+            window.addEventListener("resize", checkScreenSize);
+            checkScreenSize(); // Run on load
+        });
+    </script>
+
     
 </head>
 <body class="bg-gray-900 text-white">
     
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full bg-gray-800 shadow-md p-4 flex justify-between items-center z-10">
+    <nav class="fixed top-0 left-0 w-full bg-gray-800 dark:bg-white dark:text-black shadow-md p-4 flex flex-wrap justify-between items-center z-10 transition duration-300">
         <h1 class="text-xl font-bold ml-4">Shaghayegh D.</h1>
-        <ul class="flex space-x-6 mr-4">
-            <li><a href="#about" class="hover:text-gray-400 transition duration-300">About</a></li>
-            <li><a href="#projects" class="hover:text-gray-400 transition duration-300">Projects</a></li>
-            <li><a href="#skills" class="hover:text-gray-400 transition duration-300">Skills</a></li>
-            <li><a href="#certificates" class="hover:text-gray-400 transition duration-300">Certificates</a></li>
-            <li><a href="#contact" class="hover:text-gray-400 transition duration-300">Contact</a></li>
+        <!-- Mobile Menu Button (Hidden on Large Screens) -->
+        <button id="menu-toggle" class="lg:hidden block text-white focus:outline-none">
+            ☰
+        </button>  
+        <!-- Navigation Links -->
+        <ul id="nav-links" class="hidden lg:flex flex-wrap justify-center items-center space-x-3 w-full lg:w-auto text-center absolute top-14 left-0 bg-gray-800 lg:relative lg:top-0 lg:bg-transparent shadow-md lg:shadow-none z-20">
+            <li><a href="#about" class="text-white hover:text-gray-400 transition duration-300">About</a></li>
+            <li><a href="#projects" class="text-white hover:text-gray-400 transition duration-300">Projects</a></li>
+            <li><a href="#skills" class="text-white hover:text-gray-400 transition duration-300">Skills</a></li>
+            <li><a href="#certificates" class="text-white hover:text-gray-400 transition duration-300">Certificates</a></li>
+            <li><a href="#contact" class="text-white hover:text-gray-400 transition duration-300">Contact</a></li>
         </ul>
-        <button id="theme-toggle" onclick="toggleDarkMode()" class="bg-blue-500 dark:bg-gray-700 text-white px-4 py-2 rounded-lg">Let There Be Light ☀️</button>        
+
+
+        <button id="theme-toggle" onclick="toggleDarkMode()" class="bg-blue-500 dark:bg-gray-700 text-white px-3 py-1 rounded-lg text-sm">
+            Let There Be Light ☀️
+        </button>        
     </nav>
     
     <!-- Hero Section -->
-    <section class="h-screen flex flex-col justify-center items-center text-center px-6">
-        <img src="photo.jpg" alt="Shaghayegh" class="w-40 h-40 rounded-full shadow-lg mb-4">
-        <h2 class="text-4xl font-bold">Hey, I'm Shaghayegh</h2>
+    <section id="section" class="h-screen flex flex-col justify-center items-center text-center px-6">
+        <img src="photo.jpg" alt="Shaghayegh" class="w-40 h-40 object-cover object-left rounded-full shadow-lg mb-4">
+        <h2 class="text-4xl font-bold">Half code, half chaos.</h2>
         <p class="mt-4 text-lg text-gray-300">
             <span id="typing-text"></span>
         </p>
-        <a href="#projects" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">View My Work</a>
+                <a href="#projects" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">View My Work</a>
     </section>
 
     <script>
         var typed = new Typed("#typing-text", {
-            strings: ["Software Developer", "Tech Enthusiast", "Problem Solver"],
+            strings: ["AI Enthusiast", "Full-stack Developer", "Problem Solver"],
             typeSpeed: 50,
             backSpeed: 30,
             loop: true
@@ -106,10 +142,15 @@
     <!-- About Me Section-->
     <section id="about" class="py-20 px-6 text-center" data-aos="fade-up">
         <h2 class="text-3xl font-bold">About Me</h2>
-        <p class="mt-4 text-gray-300 max-w-2xl mx-auto">I'm a fourth-year Computer Science student with a passion for software development, problem-solving, and innovative technologies.</p>
+        <p class="mt-4 text-gray-300 max-w-2xl mx-auto">
+            I'm a fourth-year Computer Science student with a passion for software development and innovative technologies.
+            I love efficiency and solving the kind of problems that make you rethink everything. 
+            The impact of AI fascinates me, and I want to be part of shaping it—building smarter systems, pushing tech forward, and making a real difference.  
+            When I’m not coding, I’m either lost in a book, solving puzzles, or exploring hidden spots in the city.  
+            I love learning, optimizing, and sometimes overanalyzing (but hey, that’s what makes things better, right?).  
+        </p>
+        
     </section>
-    
-
     
     <style>
         @keyframes fadeIn {
@@ -122,45 +163,158 @@
         }
     </style>
 
+
+            
     <!-- Skills Section -->
     <section id="skills" class="py-20 px-6 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-bold">Skills</h2>
-        <p class="mt-4 text-gray-300">Python | Java | JavaScript | React | SQL | Linux | Git</p>
+        <h2 class="text-3xl font-bold mb-6">Tech Stack & Skills</h2>
+        
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm text-gray-300">
+            
+            <!-- Development & Programming -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-semibold text-white dark:text-black mb-2">Development & Programming</h3>
+                <p><strong>Languages:</strong> Python | Java | JavaScript | C++ | Rust | Haskell | Bash | SQL | PHP</p>
+                <p><strong>Frameworks:</strong> React | Node.js | Flask</p>
+                <p><strong>Web & Mobile:</strong> React Native | HTML5 | CSS3 | Tailwind CSS</p>
+            </div>
+
+            <!-- Systems, DevOps & Security -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-semibold text-white dark:text-black mb-2">Systems & Security</h3>
+                <p><strong>Databases & Cloud:</strong> MySQL</p>
+                <p><strong>DevOps & Tools:</strong> Docker | Git | Linux | Shell Scripting</p>
+                <p><strong>Security:</strong> API Security | Cryptography</p>
+            </div>
+
+            <!-- Workflow & Project Management -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-semibold text-white dark:text-black mb-2">Workflow & Collaboration</h3>
+                <p><strong>Agile & PM:</strong> Scrum | Agile | Jira | Trello | Figma</p>
+                <p><strong>Soft Skills:</strong> Problem-Solving | Team Collaboration | Adaptability</p>
+            </div>
+
+        </div>
     </section>
+
+
 
 
     <!-- Projects Section -->
     <section id="projects" class="py-20 px-6" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-center">Projects</h2>
         <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!--fading animation-->
+            <style>
+                .fade-slide {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: opacity 1s ease-in-out, transform 1s ease-in-out, max-height 1s ease-in-out;
+                }
+            
+                .fade-slide.active {
+                    opacity: 1;
+                    transform: translateY(0);
+                    max-height: 500px; /* Adjust max height based on content */
+                }
+            </style>
+            
+            <!--toggle between details and points-->
+            <script>
+                function toggleDetails(titleElement) {
+                    const container = titleElement.parentElement;
+                    const info = container.querySelector(".project-info");
+                    const details = container.querySelector(".project-details");
+            
+                    if (info.classList.contains("active")) {
+                        // Hide info & show details
+                        info.classList.remove("active");
+                        setTimeout(() => info.style.display = "none", 400);
+                        
+                        details.style.display = "block";
+                        setTimeout(() => details.classList.add("active"), 10);
+                    } else {
+                        // Hide details & show info
+                        details.classList.remove("active");
+                        setTimeout(() => details.style.display = "none", 400);
+            
+                        info.style.display = "block";
+                        setTimeout(() => info.classList.add("active"), 10);
+                    }
+                }
+            </script>
+
+            <!--Project StarWars-->
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
-                <h3 class="text-xl font-semibold">Project 1</h3>
-                <p class="text-gray-300 mt-2">A brief description of your project.</p>
-                <a href="#" class="text-blue-400 hover:underline">View Project</a>
+                <!-- Clickable Project Title -->
+                <h3 onclick="toggleDetails(this)" class="text-xl font-semibold cursor-pointer">StarWars</h3>
+
+                <!-- Default Project Info -->
+                <div class="project-info fade-slide active">
+                    <p class="text-gray-300 mt-2">Dec 2024 | C++, C, GLSL, OpenGL</p>
+                    <a href="https://github.com/shaghayegh0/StarWars" class="text-blue-400 hover:underline">Check it Out on GitHub</a>
+                </div>
+
+                <!-- Bullet Points (Initially Hidden) -->
+                <div class="project-details fade-slide">
+                    <ul class="text-sm space-y-2 border-l-4 border-blue-400 pl-4">
+                        <li>🎮 Developed a 3D game with a defensive cannon, enemy AI, and dynamic animations, integrating custom mesh generation and textures.
+                        </li>
+                        <li>⚡ Engineered a graphics pipeline with real-time lighting, shading, and texture mapping for enhanced visuals.
+                        </li>
+                        <li>🛠️ Optimized gameplay mechanics, including AI behaviors, explosion effects, and responsive keyboard/mouse controls.
+                        </li>
+                    </ul>            
+                </div>
             </div>
+
+            <!--Project RoboMind AI-->
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
-                <h3 class="text-xl font-semibold">Project 2</h3>
-                <p class="text-gray-300 mt-2">Another project you’ve worked on.</p>
-                <a href="#" class="text-blue-400 hover:underline">View Project</a>
+                <!-- Clickable Project Title -->
+                <h3 onclick="toggleDetails(this)" class="text-xl font-semibold cursor-pointer">RoboMind AI</h3>
+
+                <!-- Default Project Info -->
+                <div class="project-info fade-slide active">
+                    <p class="text-gray-300 mt-2">Dec 2024 | prolog, Logic Programming, Automated Reasoning</p>
+                </div>
+
+                <!-- Bullet Points (Initially Hidden) -->
+                <div class="project-details fade-slide">
+                    <ul class="text-sm space-y-2 border-l-4 border-blue-400 pl-4">
+                        <li>🤖 Built an intelligent automated planning system, simulating robotic dishwashing and soccer strategies.</li>
+                        <li>🧠 Designed a goal-driven AI framework, integrating logical inference, path optimization, and decision-making heuristics.</li>
+                        <li>⚙️ Implemented dynamic rule-based systems for object interaction, real-time adaptability, and strategic execution.</li>
+                    </ul>                       
+                </div>
             </div>
+
+            <!--Project RentWise DB-->
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
-                <h3 class="text-xl font-semibold">Project 1</h3>
-                <p class="text-gray-300 mt-2">A brief description of your project.</p>
-                <a href="#" class="text-blue-400 hover:underline">View Project</a>
+                <!-- Clickable Project Title -->
+                <h3 onclick="toggleDetails(this)" class="text-xl font-semibold cursor-pointer">RentWise DB</h3>
+
+                <!-- Default Project Info -->
+                <div class="project-info fade-slide active">
+                    <p class="text-gray-300 mt-2">Sep-Nov 2024 | MySQL, Java, Bash</p>
+                    <a href="https://github.com/shaghayegh0/photo-video-equipment-rental" class="text-blue-400 hover:underline">Check it Out on GitHub</a>
+                </div>
+
+                <!-- Bullet Points (Initially Hidden) -->
+                <div class="project-details fade-slide">
+                    <ul class="text-sm space-y-2 border-l-4 border-blue-400 pl-4">
+                        <li>🗄️ Engineered a SQL database for a photo/video rental system, optimizing data organization and retrieval.</li>
+                        <li>⚡ Developed a Bash-based automation suite and a Java GUI, streamlining database operations and queries.</li>
+                        <li>🔒 Implemented triggers, stored procedures, and security protocols to enhance performance and data integrity.</li>
+                    </ul>                                         
+                </div>
             </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
-                <h3 class="text-xl font-semibold">Project 2</h3>
-                <p class="text-gray-300 mt-2">Another project you’ve worked on.</p>
-                <a href="#" class="text-blue-400 hover:underline">View Project</a>
-            </div>
+
         </div>
     </section>
 
-    <!-- GitHub API Integration -->
-    <!-- <section id="github-projects" class="py-20 px-6 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-bold">Latest GitHub Projects</h2>
-        <div id="github-projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </section>     -->
 
     <!-- Certificates & Awards Section -->
     <section id="certificates" class="py-20 px-6 text-center" data-aos="fade-up">
