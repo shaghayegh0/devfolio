@@ -94,28 +94,30 @@
 
     
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900   ">
     
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 w-full bg-gray-800 dark:bg-white dark:text-black shadow-md p-4 flex flex-wrap justify-between items-center z-10 transition duration-300">
         <h1 class="text-xl font-bold ml-4">Shaghayegh D.</h1>
+        
         <!-- Mobile Menu Button (Hidden on Large Screens) -->
-        <button id="menu-toggle" class="lg:hidden block text-white focus:outline-none">
+        <button id="menu-toggle" class="lg:hidden block focus:outline-none">
             ☰
-        </button>  
+        </button>
+        
         <!-- Navigation Links -->
-        <ul id="nav-links" class="hidden lg:flex flex-wrap justify-center items-center space-x-3 w-full lg:w-auto text-center absolute top-14 left-0 bg-gray-800 lg:relative lg:top-0 lg:bg-transparent shadow-md lg:shadow-none z-20">
-            <li><a href="#about" class="text-white hover:text-gray-400 transition duration-300">About</a></li>
-            <li><a href="#projects" class="text-white hover:text-gray-400 transition duration-300">Projects</a></li>
-            <li><a href="#skills" class="text-white hover:text-gray-400 transition duration-300">Skills</a></li>
-            <li><a href="#certificates" class="text-white hover:text-gray-400 transition duration-300">Certificates</a></li>
-            <li><a href="#contact" class="text-white hover:text-gray-400 transition duration-300">Contact</a></li>
+        <ul id="nav-links" class="hidden lg:flex flex-wrap justify-center items-center space-x-3 w-full lg:w-auto text-center absolute lg:relative top-14 lg:top-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:transform-none bg-gray-800 lg:bg-transparent shadow-md lg:shadow-none z-20">
+            <li><a href="#about" class="block py-2 px-4 hover:text-gray-400 transition duration-300">About</a></li>
+            <li><a href="#projects" class="block py-2 px-4 hover:text-gray-400 transition duration-300">Projects</a></li>
+            <li><a href="#skills" class="block py-2 px-4 hover:text-gray-400 transition duration-300">Skills</a></li>
+            <li><a href="#certificates" class="block py-2 px-4 hover:text-gray-400 transition duration-300">Certificates</a></li>
+            <li><a href="#contact" class="block py-2 px-4 hover:text-gray-400 transition duration-300">Contact</a></li>
         </ul>
 
-
-        <button id="theme-toggle" onclick="toggleDarkMode()" class="bg-blue-500 dark:bg-gray-700 text-white px-3 py-1 rounded-lg text-sm">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" onclick="toggleDarkMode()" class="bg-blue-500 dark:bg-gray-700 px-3 py-1 rounded-lg text-sm">
             Let There Be Light ☀️
-        </button>        
+        </button>
     </nav>
     
     <!-- Hero Section -->
@@ -125,7 +127,7 @@
         <p class="mt-4 text-lg text-gray-300">
             <span id="typing-text"></span>
         </p>
-                <a href="#projects" class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">View My Work</a>
+                <!-- <a href="#projects" class="mt-6 bg-blue-500 hover:bg-blue-700    font-bold py-2 px-6 rounded-lg transition duration-300">View My Work</a> -->
     </section>
 
     <script>
@@ -140,7 +142,7 @@
 
     
     <!-- About Me Section-->
-    <section id="about" class="py-20 px-6 text-center" data-aos="fade-up">
+    <section id="about" class="py-40 px-6 text-center -mt-20" data-aos="fade-up">
         <h2 class="text-3xl font-bold">About Me</h2>
         <p class="mt-4 text-gray-300 max-w-2xl mx-auto">
             I'm a fourth-year Computer Science student with a passion for software development and innovative technologies.
@@ -165,37 +167,69 @@
 
 
             
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-6">Tech Stack & Skills</h2>
+<!-- Skills Section -->
+<section id="skills" class="py-20 px-6 text-center" data-aos="fade-up">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-white mb-12">Tech Stack & Skills</h2>
         
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm text-gray-300">
+        <!-- Grid for Skills -->
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm text-gray-300">
             
             <!-- Development & Programming -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-lg font-semibold text-white dark:text-black mb-2">Development & Programming</h3>
-                <p><strong>Languages:</strong> Python | Java | JavaScript | C++ | Rust | Haskell | Bash | SQL | PHP</p>
-                <p><strong>Frameworks:</strong> React | Node.js | Flask</p>
-                <p><strong>Web & Mobile:</strong> React Native | HTML5 | CSS3 | Tailwind CSS</p>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Development & Programming</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <strong class="block text-gray-100">Languages</strong>
+                        Python, Java, JavaScript, C++, Rust, Haskell, Bash, SQL, PHP, TypeScript, Elixir, Ruby, Prolog, OpenGL
+                    </li>
+                    <li>
+                        <strong class="block text-gray-100">Frameworks</strong>
+                        React, Node.js, Flask, Vue, Bootstrap, Angular, JUnit
+                    </li>
+                    <li>
+                        <strong class="block text-gray-100">Web & Mobile</strong>
+                        React Native, HTML5, CSS3, Tailwind CSS
+                    </li>
+                </ul>
             </div>
 
             <!-- Systems, DevOps & Security -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-lg font-semibold text-white dark:text-black mb-2">Systems & Security</h3>
-                <p><strong>Databases & Cloud:</strong> MySQL</p>
-                <p><strong>DevOps & Tools:</strong> Docker | Git | Linux | Shell Scripting</p>
-                <p><strong>Security:</strong> API Security | Cryptography</p>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Systems & Security</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <strong class="block text-gray-100">Databases & Cloud</strong>
+                        MySQL, Docker, UNIX, VM
+                    </li>
+                    <li>
+                        <strong class="block text-gray-100">DevOps & Tools</strong>
+                        Git, Linux, Shell Scripting, VS Code, Visual Studio, PyCharm, Eclipse
+                    </li>
+                    <li>
+                        <strong class="block text-gray-100">Security</strong>
+                        API Security, Cryptography
+                    </li>
+                </ul>
             </div>
 
             <!-- Workflow & Project Management -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-lg font-semibold text-white dark:text-black mb-2">Workflow & Collaboration</h3>
-                <p><strong>Agile & PM:</strong> Scrum | Agile | Jira | Trello | Figma</p>
-                <p><strong>Soft Skills:</strong> Problem-Solving | Team Collaboration | Adaptability</p>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Workflow & Collaboration</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <strong class="block text-gray-100">Agile & PM</strong>
+                        Scrum, Agile, Jira, Trello, Figma
+                    </li>
+                    <li>
+                        <strong class="block text-gray-100">Soft Skills</strong>
+                        Problem-Solving, Team Collaboration, Adaptability
+                    </li>
+                </ul>
             </div>
-
         </div>
-    </section>
+    </div>
+</section>
 
 
 
@@ -316,14 +350,35 @@
     </section>
 
 
-    <!-- Certificates & Awards Section -->
-    <section id="certificates" class="py-20 px-6 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-bold">Certificates & Awards</h2>
-        <div class="mt-8 flex flex-col items-center">
-            <img src="Coursera_Intro_to_GAI_page_1.png" alt="Certificate" class="w-80 shadow-lg rounded-lg">
-            <p class="mt-4 text-gray-300">Coursera - Introduction to Generative AI</p>
+<!-- Certificates & Awards Section -->
+<section id="certificates" class="py-20 px-6 bg-gray-900 text-center" data-aos="fade-up">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-white mb-12">Certificates & Awards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Certificate 1 -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                <div class="h-64 overflow-hidden rounded-lg flex items-center justify-center">
+                    <img src="GAI.png" alt="Intro to GAI Coursera Certificate" class="w-full h-full object-contain">
+                </div>
+                <div class="mt-4">
+                    <p class="text-lg font-semibold text-gray-100">Introduction to Generative AI</p>
+                    <p class="text-sm text-gray-400">Coursera</p>
+                </div>
+            </div>
+
+            <!-- Certificate 2 -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                <div class="h-64 overflow-hidden rounded-lg flex items-center justify-center">
+                    <img src="webdesign.png" alt="Hackaton Certificate" class="w-full h-full object-contain">
+                </div>
+                <div class="mt-4">
+                    <p class="text-lg font-semibold text-gray-100">Web Design Tech</p>
+                    <p class="text-sm text-gray-400">Hackaton 2023</p>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
     
     
     <!-- Contact Section -->
@@ -331,9 +386,9 @@
         <h2 class="text-3xl font-bold">Contact</h2>
         <p class="mt-4 text-gray-300">Let's connect!</p>
         <div class="mt-4 flex justify-center space-x-4">
-            <a href="#" class="hover:text-blue-400 transition duration-300">GitHub</a>
-            <a href="#" class="hover:text-blue-400 transition duration-300">LinkedIn</a>
-            <a href="mailto:your.email@example.com" class="hover:text-blue-400 transition duration-300">Email</a>
+            <a href="https://github.com/shaghayegh0" class="hover:text-blue-400 transition duration-300">GitHub</a>
+            <a href="http://www.linkedin.com/in/shaghayegh-ds" class="hover:text-blue-400 transition duration-300">LinkedIn</a>
+            <a href="shaghayegh.dehghanis@torontomu.ca" class="hover:text-blue-400 transition duration-300">Email</a>
         </div>
     </section>
 
@@ -343,10 +398,10 @@
         <p class="mt-4 text-gray-300">Let's connect!</p>
 
         <form id="contact-form" class="mt-6 max-w-lg mx-auto">
-            <input type="text" id="name" placeholder="Your Name" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600 text-white" required>
-            <input type="email" id="email" placeholder="Your Email" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600 text-white" required>
-            <textarea id="message" placeholder="Your Message" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600 text-white" required></textarea>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Send</button>
+            <input type="text" id="name" placeholder="Your Name" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600   " required>
+            <input type="email" id="email" placeholder="Your Email" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600   " required>
+            <textarea id="message" placeholder="Your Message" class="w-full p-2 mb-4 rounded-md bg-gray-800 border border-gray-600   " required></textarea>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700    font-bold py-2 px-6 rounded-lg transition duration-300">Send</button>
         </form>
 
         <p id="response-message" class="mt-4 text-green-400"></p>
@@ -406,14 +461,14 @@
     </script> -->
 
     <!-- AI Chatbot UI -->
-    <div id="chat-container" class="fixed bottom-6 right-6 w-72 bg-gray-800 text-white p-4 rounded-lg shadow-lg hidden">
+    <div id="chat-container" class="fixed bottom-6 right-6 w-72 bg-gray-800    p-4 rounded-lg shadow-lg hidden">
         <h3 class="text-lg font-bold mb-2">Chat with Me 🤖</h3>
         <div id="chat-box" class="h-40 overflow-y-auto border border-gray-700 p-2 mb-2 text-sm"></div>
         <input id="chat-input" type="text" class="w-full p-2 text-black rounded-md" placeholder="Ask me anything...">
-        <button onclick="sendMessage()" class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md">Send</button>
+        <button onclick="sendMessage()" class="mt-2 bg-blue-500 hover:bg-blue-700    font-bold py-1 px-3 rounded-md">Send</button>
     </div>
 
-    <button id="chat-toggle" class="fixed bottom-6 right-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg">💬 Chat</button>
+    <button id="chat-toggle" class="fixed bottom-6 right-6 bg-blue-500 hover:bg-blue-700    font-bold py-2 px-4 rounded-full shadow-lg">💬 Chat</button>
 
     <script>
         document.getElementById("chat-toggle").addEventListener("click", function () {
