@@ -42,8 +42,8 @@ app.post("/chatbot", async (req, res) => {
     res.json({ response: completion.choices[0].message.content });
 
   } catch (error) {
-    console.error("❌ OpenAI API Error:", error);
-    res.status(500).json({ error: "Failed to fetch AI response" });
+    console.error("OpenAI API Error:", error);
+    res.status(500).json({ error: "Failed to fetch AI response", details: error.message });
   }
 });
 

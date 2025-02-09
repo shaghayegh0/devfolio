@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/x-icon" href="robot.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaghayegh D. | Portfolio</title>
+    <title>Sherry | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="styles.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        };
-    </script>
-    <script>
+
+    <!-- <script>
         function toggleDarkMode() {
             const html = document.documentElement;
             const button = document.getElementById('theme-toggle');
@@ -45,28 +42,17 @@
                 button.textContent = 'Join the Dark Side 🌙';
             }
         });
+    </script> -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            AOS.init({
+                duration: 1000, // Ensures animations work smoothly
+                once: true      // Runs animations only once
+            });
+        });
     </script>
     
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-            background-color: #111827; /* Dark mode default */
-            color: #ffffff;
-        }
-        .dark body {
-            background-color: #ffffff; /* Light mode */
-            color: #111827;
-        }
-        .light body {
-
-            background-color: #111827; /* Dark mode */
-            color: #ffffff;
-        }
-    </style>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const menuToggle = document.getElementById("menu-toggle");
@@ -75,38 +61,51 @@
             function checkScreenSize() {
                 if (window.innerWidth >= 1024) {
                     navLinks.classList.remove("hidden"); // Ensure visibility on desktop
+                    navLinks.classList.add("flex");
+                    navLinks.style.left = "auto"; // Reset centering for desktop
+                    navLinks.style.transform = "none";
                 } else {
-                    navLinks.classList.add("hidden"); // Hide menu on mobile until toggled
+                    navLinks.classList.add("hidden"); // Hide menu on mobile initially
                 }
             }
 
             menuToggle.addEventListener("click", function () {
                 navLinks.classList.toggle("hidden");
-                navLinks.classList.toggle("flex");
-                navLinks.classList.toggle("flex-wrap");
-                navLinks.classList.toggle("justify-center");
+
+                if (!navLinks.classList.contains("hidden")) {
+                    navLinks.classList.add("flex");
+                    navLinks.style.left = "50%";
+                    navLinks.style.transform = "translateX(-50%)";
+                } else {
+                    navLinks.classList.remove("flex");
+                }
             });
 
             window.addEventListener("resize", checkScreenSize);
             checkScreenSize(); // Run on load
         });
+
     </script>
+
 
     
 </head>
-<body class="bg-gray-900   ">
-    
+<body>
+    <div id="game-container">
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full bg-gray-800 dark:bg-white dark:text-black shadow-md p-4 flex flex-wrap justify-between items-center z-10 transition duration-300">
-        <h1 class="text-xl font-bold ml-4">Shaghayegh D.</h1>
+    <nav class="fixed top-0 left-0 w-full bg-gray-800 shadow-md p-4 flex items-center justify-between z-10 transition duration-300">
+        <!-- Logo on the Left -->
+        <h1 class="text-xl font-bold ml-4">Sherry</h1>
         
-        <!-- Mobile Menu Button (Hidden on Large Screens) -->
-        <button id="menu-toggle" class="lg:hidden block focus:outline-none">
-            ☰
-        </button>
-        
-        <!-- Navigation Links -->
-        <ul id="nav-links" class="hidden lg:flex flex-wrap justify-center items-center space-x-3 w-full lg:w-auto text-center absolute lg:relative top-14 lg:top-0 left-1/2 lg:left-0 transform -translate-x-1/2 lg:transform-none bg-gray-800 lg:bg-transparent shadow-md lg:shadow-none z-20">
+        <!-- Mobile Menu Button (Centered) -->
+        <div class="absolute left-1/2 transform -translate-x-1/2">
+            <button id="menu-toggle" class="lg:hidden block focus:outline-none text-2xl">
+                ☰
+            </button>
+        </div>
+
+        <!-- Navigation Links (Hidden on Mobile) -->
+        <ul id="nav-links" class="hidden lg:flex justify-center items-center space-x-3 max-w-[80%] lg:w-auto text-center fixed lg:relative top-14 lg:top-0 bg-gray-800 lg:bg-transparent shadow-md lg:shadow-none z-20">
             <li><a href="#about" class="block py-2 px-4 hover:text-gray-400 transition duration-300">About</a></li>
             <li><a href="#projects" class="block py-2 px-4 hover:text-gray-400 transition duration-300">Projects</a></li>
             <li><a href="#skills" class="block py-2 px-4 hover:text-gray-400 transition duration-300">Skills</a></li>
@@ -114,15 +113,157 @@
             <li><a href="#contact" class="block py-2 px-4 hover:text-gray-400 transition duration-300">Contact</a></li>
         </ul>
 
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle" onclick="toggleDarkMode()" class="bg-blue-500 dark:bg-gray-700 px-3 py-1 rounded-lg text-sm">
-            Let There Be Light ☀️
-        </button>
+        <div id="cutey">🐾</div>
+          <!-- pop-up for icon -->
+          <div id="popup">
+            <p>I thought I was too fast for you! 🏃‍♂️</p>
+            <button onclick="resetGame()">Try Again</button>
+          </div>
+        
+          <script>
+            const icon = document.getElementById('cutey');
+            const container = document.getElementById('game-container');
+            const popup = document.getElementById('popup');
+        
+            // Initial position of the icon
+            let posX = window.innerWidth - 50; // 50px from the right edge
+            let posY = 20; // 20px from the top edge
+            icon.style.left = `${posX}px`;
+            icon.style.top = `${posY}px`;
+        
+            // Speed of the icon movement
+            const speed = 15; // Increased speed to make it harder to catch
+        
+            // Function to shake the icon
+            function shakeIcon() {
+              icon.style.animation = 'shake 0.5s ease-in-out'; // Apply shake animation
+              setTimeout(() => {
+                icon.style.animation = 'none'; // Remove animation after it completes
+              }, 500); // 0.5 seconds
+            }
+        
+            // Shake the icon every 3 seconds
+            setInterval(shakeIcon, 3000);
+        
+            // Function to move the icon away from the mouse
+            function moveIcon(event) {
+              const mouseX = event.clientX;
+              const mouseY = event.clientY;
+        
+              // Calculate the direction vector from the mouse to the icon
+              let deltaX = posX - mouseX;
+              let deltaY = posY - mouseY;
+        
+              // Normalize the direction vector
+              const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+              deltaX = (deltaX / distance) * speed;
+              deltaY = (deltaY / distance) * speed;
+        
+              // Update the icon's position
+              posX += deltaX;
+              posY += deltaY;
+        
+              // Ensure the icon stays within the window boundaries with a safe margin
+              const iconRect = icon.getBoundingClientRect();
+              const margin = 50; // Safe margin from the edges
+              const maxX = window.innerWidth - iconRect.width - margin;
+              const maxY = window.innerHeight - iconRect.height - margin;
+        
+              if (posX < margin) posX = margin;
+              if (posX > maxX) posX = maxX;
+              if (posY < margin) posY = margin;
+              if (posY > maxY) posY = maxY;
+        
+              // Apply the new position
+              icon.style.left = `${posX}px`;
+              icon.style.top = `${posY}px`;
+            }
+        
+            // Function to show the pop-up when the icon is clicked
+            function showPopup() {
+              popup.style.display = 'block';
+            }
+        
+            // Function to reset the game
+            function resetGame() {
+              popup.style.display = 'none';
+              posX = window.innerWidth / 2;
+              posY = window.innerHeight / 2;
+              icon.style.left = `${posX}px`;
+              icon.style.top = `${posY}px`;
+            }
+        
+            // Add event listener for mouse movement
+            container.addEventListener('mousemove', moveIcon);
+        
+            // Add event listener for clicking the icon
+            icon.addEventListener('click', showPopup);
+          </script>
+
+
+        <!-- Search Bar on the Right -->
+        <!-- <div class="relative w-[100px] lg:w-[150px]"> 
+            <input type="text" id="search" placeholder="Search..." 
+                class="bg-gray-500 py-1 px-2 w-full rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+            <ul id="search-results" class="absolute left-0 w-full mt-1 bg-gray-800 shadow-md rounded-lg hidden">
+                <!-- Search results will be inserted here dynamically -->
+            <!-- </ul>
+        </div>
+        <script>
+            const searchInput = document.getElementById("search");
+            const allLinks = document.querySelectorAll("a"); // Select all links on the page
+            const allProjects = document.querySelectorAll("h3[onclick='toggleDetails(this)']"); // Select project titles
+            const searchResults = document.getElementById("search-results");
+        
+            searchInput.addEventListener("input", function () {
+                const query = this.value.toLowerCase();
+                searchResults.innerHTML = "";
+        
+                if (!query) {
+                    searchResults.classList.add("hidden");
+                    return;
+                }
+        
+                // Search all links (including GitHub, LinkedIn, Email, etc.)
+                allLinks.forEach(link => {
+                    const text = link.innerText.toLowerCase();
+                    const href = link.getAttribute("href");
+        
+                    if (text.includes(query) && href) {
+                        const resultItem = document.createElement("li");
+                        resultItem.innerHTML = `<a href="${href}" 
+                            class="block px-4 py-2 hover:bg-gray-700 text-white rounded-lg">${link.innerText}</a>`;
+                        searchResults.appendChild(resultItem);
+                    }
+                });
+        
+                // Search project titles
+                allProjects.forEach(project => {
+                    const title = project.innerText.toLowerCase();
+                    if (title.includes(query)) {
+                        const resultItem = document.createElement("li");
+                        resultItem.innerHTML = `<a href="#${title.replace(/\s+/g, '-').toLowerCase()}" 
+                            class="block px-4 py-2 hover:bg-gray-700 text-white rounded-lg">${project.innerText} (Project)</a>`;
+                        searchResults.appendChild(resultItem);
+                    }
+                });
+        
+                searchResults.classList.toggle("hidden", searchResults.children.length === 0);
+            });
+        
+            document.addEventListener("click", function (e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.classList.add("hidden");
+                }
+            });
+        </script> --> 
+        
+
     </nav>
     
     <!-- Hero Section -->
     <section id="section" class="h-screen flex flex-col justify-center items-center text-center px-6">
-        <img src="photo.jpg" alt="Shaghayegh" class="w-40 h-40 object-cover object-left rounded-full shadow-lg mb-4">
+        <img src="photo.jpg" alt="Sherry" class="w-40 h-40 object-cover object-left rounded-full shadow-lg mb-4">
         <h2 class="text-4xl font-bold">Half code, half chaos.</h2>
         <p class="mt-4 text-lg text-gray-300">
             <span id="typing-text"></span>
@@ -130,7 +271,7 @@
                 <!-- <a href="#projects" class="mt-6 bg-blue-500 hover:bg-blue-700    font-bold py-2 px-6 rounded-lg transition duration-300">View My Work</a> -->
     </section>
 
-    <script>
+    <script >
         var typed = new Typed("#typing-text", {
             strings: ["AI Enthusiast", "Full-stack Developer", "Problem Solver"],
             typeSpeed: 50,
@@ -167,69 +308,69 @@
 
 
             
-<!-- Skills Section -->
-<section id="skills" class="py-20 px-6 text-center" data-aos="fade-up">
-    <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-white mb-12">Tech Stack & Skills</h2>
-        
-        <!-- Grid for Skills -->
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm text-gray-300">
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 text-center" data-aos="fade-up">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-white mb-12">Tech Stack & Skills</h2>
             
-            <!-- Development & Programming -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Development & Programming</h3>
-                <ul class="space-y-3">
-                    <li>
-                        <strong class="block text-gray-100">Languages</strong>
-                        Python, Java, JavaScript, C++, Rust, Haskell, Bash, SQL, PHP, TypeScript, Elixir, Ruby, Prolog, OpenGL
-                    </li>
-                    <li>
-                        <strong class="block text-gray-100">Frameworks</strong>
-                        React, Node.js, Flask, Vue, Bootstrap, Angular, JUnit
-                    </li>
-                    <li>
-                        <strong class="block text-gray-100">Web & Mobile</strong>
-                        React Native, HTML5, CSS3, Tailwind CSS
-                    </li>
-                </ul>
-            </div>
+            <!-- Grid for Skills -->
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm text-gray-300">
+                
+                <!-- Development & Programming -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Development & Programming</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <strong class="block text-gray-100">Languages</strong>
+                            Python, Java, JavaScript, C++, Rust, Haskell, Bash, SQL, PHP, TypeScript, Elixir, Ruby, Prolog, OpenGL
+                        </li>
+                        <li>
+                            <strong class="block text-gray-100">Frameworks</strong>
+                            React, Node.js, Flask, Vue, Bootstrap, Angular, JUnit
+                        </li>
+                        <li>
+                            <strong class="block text-gray-100">Web & Mobile</strong>
+                            React Native, HTML5, CSS3, Tailwind CSS
+                        </li>
+                    </ul>
+                </div>
 
-            <!-- Systems, DevOps & Security -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Systems & Security</h3>
-                <ul class="space-y-3">
-                    <li>
-                        <strong class="block text-gray-100">Databases & Cloud</strong>
-                        MySQL, Docker, UNIX, VM
-                    </li>
-                    <li>
-                        <strong class="block text-gray-100">DevOps & Tools</strong>
-                        Git, Linux, Shell Scripting, VS Code, Visual Studio, PyCharm, Eclipse
-                    </li>
-                    <li>
-                        <strong class="block text-gray-100">Security</strong>
-                        API Security, Cryptography
-                    </li>
-                </ul>
-            </div>
+                <!-- Systems, DevOps & Security -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Systems & Security</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <strong class="block text-gray-100">Databases & Cloud</strong>
+                            MySQL, Docker, UNIX, VM
+                        </li>
+                        <li>
+                            <strong class="block text-gray-100">DevOps & Tools</strong>
+                            Git, Linux, Shell Scripting, VS Code, Visual Studio, PyCharm, Eclipse
+                        </li>
+                        <li>
+                            <strong class="block text-gray-100">Security</strong>
+                            API Security, Cryptography
+                        </li>
+                    </ul>
+                </div>
 
-            <!-- Workflow & Project Management -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Workflow & Collaboration</h3>
-                <ul class="space-y-3">
-                    <li>
-                        <strong class="block text-gray-100">Agile & PM</strong>
-                        Scrum, Agile, Jira, Trello, Figma
-                    </li>
-                    <li>
-                        <strong class="block text-gray-100">Soft Skills</strong>
-                        Problem-Solving, Team Collaboration, Adaptability
-                    </li>
-                </ul>
+                <!-- Workflow & Project Management -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Workflow & Collaboration</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <strong class="block text-gray-100">Agile & PM</strong>
+                            Scrum, Agile, Jira, Trello, Figma
+                        </li>
+                        <li>
+                            <strong class="block text-gray-100">Soft Skills</strong>
+                            Problem-Solving, Team Collaboration, Adaptability
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 
@@ -294,7 +435,7 @@
 
                 <!-- Bullet Points (Initially Hidden) -->
                 <div class="project-details fade-slide">
-                    <ul class="text-sm space-y-2 border-l-4 border-blue-400 pl-4">
+                    <ul class="text-sm space-y-1 pl-4 mt-3">
                         <li>🎮 Developed a 3D game with a defensive cannon, enemy AI, and dynamic animations, integrating custom mesh generation and textures.
                         </li>
                         <li>⚡ Engineered a graphics pipeline with real-time lighting, shading, and texture mapping for enhanced visuals.
@@ -317,7 +458,7 @@
 
                 <!-- Bullet Points (Initially Hidden) -->
                 <div class="project-details fade-slide">
-                    <ul class="text-sm space-y-2 border-l-4 border-blue-400 pl-4">
+                    <ul class="text-sm space-y-1 pl-4 mt-3">
                         <li>🤖 Built an intelligent automated planning system, simulating robotic dishwashing and soccer strategies.</li>
                         <li>🧠 Designed a goal-driven AI framework, integrating logical inference, path optimization, and decision-making heuristics.</li>
                         <li>⚙️ Implemented dynamic rule-based systems for object interaction, real-time adaptability, and strategic execution.</li>
@@ -338,7 +479,7 @@
 
                 <!-- Bullet Points (Initially Hidden) -->
                 <div class="project-details fade-slide">
-                    <ul class="text-sm space-y-2 border-l-4 border-blue-400 pl-4">
+                    <ul class="text-sm space-y-1 pl-4 mt-3">
                         <li>🗄️ Engineered a SQL database for a photo/video rental system, optimizing data organization and retrieval.</li>
                         <li>⚡ Developed a Bash-based automation suite and a Java GUI, streamlining database operations and queries.</li>
                         <li>🔒 Implemented triggers, stored procedures, and security protocols to enhance performance and data integrity.</li>
@@ -350,36 +491,85 @@
     </section>
 
 
-<!-- Certificates & Awards Section -->
-<section id="certificates" class="py-20 px-6 bg-gray-900 text-center" data-aos="fade-up">
-    <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-white mb-12">Certificates & Awards</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Certificate 1 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                <div class="h-64 overflow-hidden rounded-lg flex items-center justify-center">
-                    <img src="GAI.png" alt="Intro to GAI Coursera Certificate" class="w-full h-full object-contain">
-                </div>
-                <div class="mt-4">
-                    <p class="text-lg font-semibold text-gray-100">Introduction to Generative AI</p>
-                    <p class="text-sm text-gray-400">Coursera</p>
-                </div>
-            </div>
+    <!-- Certificates & Awards Section -->
+    <section id="certificates" class="py-20 px-6 bg-gray-900 text-center" data-aos="fade-up">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-white mb-12">Certificates & Awards</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certificate 1 -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                    <!-- Clickable Certificate Image -->
+                    <div class="h-64 overflow-hidden rounded-lg flex items-center justify-center cursor-pointer" onclick="toggleDetails(this)">
+                        <img src="GAI.png" alt="Intro to GAI Coursera Certificate" class="w-full h-full object-contain">
+                    </div>
 
-            <!-- Certificate 2 -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                <div class="h-64 overflow-hidden rounded-lg flex items-center justify-center">
-                    <img src="webdesign.png" alt="Hackaton Certificate" class="w-full h-full object-contain">
+                    <!-- Default Certificate Info -->
+                    <div class="project-info fade-slide active mt-4">
+                        <p class="text-lg font-semibold text-gray-100">Introduction to Generative AI</p>
+                        <p class="text-sm text-gray-400">Coursera</p>
+                    </div>
+
+                    <!-- Bullet Points (Initially Hidden) -->
+                    <div class="project-details fade-slide mt-4">
+                        <ul class="text-sm space-y-4 text-left text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">📘</span>
+                                <span>Explored Generative AI's scope in AI, ML, and deep learning.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">🧠</span>
+                                <span>Studied Generative vs. Discriminative models and LLMs.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">⚙️</span>
+                                <span>Covered transformers and foundational models.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">🚀</span>
+                                <span>Focused on text-to-text, text-to-image, and text-to-task applications.</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="mt-4">
-                    <p class="text-lg font-semibold text-gray-100">We Design Tech</p>
-                    <p class="text-sm text-gray-400">Hackaton 2023</p>
+
+                <!-- Certificate 2 -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
+                    <!-- Clickable Certificate Image -->
+                    <div class="h-64 overflow-hidden rounded-lg flex items-center justify-center cursor-pointer" onclick="toggleDetails(this)">
+                        <img src="webdesign.png" alt="Hackaton Certificate" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Default Certificate Info -->
+                    <div class="project-info fade-slide active mt-4">
+                        <p class="text-lg font-semibold text-gray-100">We Design Tech</p>
+                        <p class="text-sm text-gray-400">Hackaton 2023</p>
+                    </div>
+
+                    <!-- Bullet Points (Initially Hidden) -->
+                    <div class="project-details fade-slide mt-4">
+                        <ul class="text-sm space-y-4 text-left text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">🎯</span>
+                                <span>36-hour collaborative event on design thinking and problem-solving.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">🛠️</span>
+                                <span>Advanced Figma prototyping and UI/UX design skills.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">🎤</span>
+                                <span>Improved pitching and presentation techniques.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-400 mr-3">🤝</span>
+                                <span>Collaborated with teams to innovate and solve challenges.</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-    
+    </section>
     
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-6 text-center" data-aos="fade-up">
@@ -501,6 +691,7 @@
             }
         }
     </script>
+    </div>
 
     
 </body>

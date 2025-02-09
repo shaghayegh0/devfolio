@@ -1,8 +1,28 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    background-color: #111827; /* Dark mode default */
+    color: #ffffff;
+}
+
+.dark body {
+    color: white; /* Ensures text remains white in dark mode */
+}
+
 #nav-links {
     transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100vw; /* Ensures full width in mobile */
+    max-width: 100%; /* Prevents overflow */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #nav-links:not(.hidden) {
@@ -13,7 +33,9 @@
 #nav-links.show {
     max-height: 300px; 
     opacity: 0;
+    display: flex;
 }
+
 
 #menu-toggle {
     display: block;
@@ -25,3 +47,90 @@
     }
 }
 
+/* Smooth transition for the explanation box */
+#explanation1, #explanation2 {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Add a slight scale effect on hover */
+.bg-gray-800:hover {
+    transform: scale(1.02);
+}
+
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #cutey {
+    position: absolute;
+    font-size: 20px;
+    cursor: pointer;
+    color: lightblue;
+    user-select: none;
+  }
+
+  /* Shake animation */
+  @keyframes shake {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(15deg);
+    }
+    50% {
+      transform: rotate(-15deg);
+    }
+    75% {
+      transform: rotate(15deg);
+    }
+  }
+
+/* Improved Pop-up Styling */
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1F2937; /* Tailwind gray-800 for a dark background */
+    color: #E5E7EB; /* Light text (gray-200) for contrast */
+    padding: 1.5rem; /* Extra spacing for a modern feel */
+    border: 2px solid #63B3ED; /* Blue accent (blue-400) to match your links */
+    border-radius: 0.5rem; /* Smooth rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    text-align: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Style for the Try Again button inside the popup */
+  #popup button {
+    margin-top: 1rem;
+    background-color: #4299E1; /* Blue-500 to echo your site’s blue accents */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #popup button:hover {
+    background-color: #2B6CB0; /* Blue-700 on hover */
+  }
+  
+  /* Fade-in animation for a smooth appearance */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -45%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
