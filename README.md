@@ -44,6 +44,6 @@ A dynamic, interactive portfolio showcasing projects, skills, and an AI-powered 
 
 
 ## 🔗 **Live Demo & Contact**  
-- **Portfolio Live:** [View Here](https://github.com/shaghayegh0/devfolio)  
+- **Portfolio Live:** [View Here](https://shaghayegh0.github.io/devfolio/)  
 - **LinkedIn:** [Shaghayegh D.](https://www.linkedin.com/in/shaghayegh-ds)  
 
