@@ -114,91 +114,107 @@
         </ul>
 
         <div id="cutey">🐾</div>
-          <!-- pop-up for icon -->
-          <div id="popup">
-            <p>I thought I was too fast for you! 🏃‍♂️</p>
-            <button onclick="resetGame()">Try Again</button>
-          </div>
-        
-          <script>
-            const icon = document.getElementById('cutey');
-            const container = document.getElementById('game-container');
-            const popup = document.getElementById('popup');
-        
-            // Initial position of the icon
-            let posX = window.innerWidth - 50; // 50px from the right edge
-            let posY = 20; // 20px from the top edge
+
+        <div id="cat-container">
+            <div id="cat-head"> 
+                <img src="cat.png" alt="Cute Cat Icon">
+            </div>
+            <div id="speech-bubble">I thought I was too fast for you!</div>
+        </div>
+
+        <script src="cutey.js"></script>
+
+
+        <script>
+        const icon = document.getElementById('cutey');
+        const container = document.getElementById('game-container');
+        const popup = document.getElementById('popup');
+
+        // Initial position of the icon
+        let posX = window.innerWidth - 75; // 50px from the right edge
+        let posY = 20; // 20px from the top edge
+        icon.style.left = `${posX}px`;
+        icon.style.top = `${posY}px`;
+
+        // Speed of the icon movement
+        const speed = 15;
+
+        // Proximity threshold (in pixels) - to control when cutey starts running away from mouse
+        const proximityThreshold = 50; 
+
+        // Function to shake the icon
+        function shakeIcon() {
+            icon.style.animation = 'shake 0.5s ease-in-out'; // Apply shake animation
+            setTimeout(() => {
+            icon.style.animation = 'none'; // Remove animation after it completes
+            }, 500); // 0.5 seconds
+        }
+
+        // Shake the icon every 3 seconds
+        setInterval(shakeIcon, 3000);
+
+        // Function to move the icon away from the mouse
+        function moveIcon(event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Calculate the distance between the mouse and the icon
+            const deltaX = posX - mouseX;
+            const deltaY = posY - mouseY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            // Only move the icon if the mouse is within the proximity threshold
+            if (distance < proximityThreshold) {
+            // Normalize the direction vector
+            const directionX = deltaX / distance;
+            const directionY = deltaY / distance;
+
+            // Update the icon's position
+            posX += directionX * speed;
+            posY += directionY * speed;
+
+            // Ensure the icon stays within the window boundaries with a safe margin
+            const iconRect = icon.getBoundingClientRect();
+            const margin = 50; // Safe margin from the edges
+            const maxX = window.innerWidth - iconRect.width - margin;
+            const maxY = window.innerHeight - iconRect.height - margin;
+
+            if (posX < margin) posX = margin;
+            if (posX > maxX) posX = maxX;
+            if (posY < margin) posY = margin;
+            if (posY > maxY) posY = maxY;
+
+            // Apply the new position
             icon.style.left = `${posX}px`;
             icon.style.top = `${posY}px`;
-        
-            // Speed of the icon movement
-            const speed = 15; // Increased speed to make it harder to catch
-        
-            // Function to shake the icon
-            function shakeIcon() {
-              icon.style.animation = 'shake 0.5s ease-in-out'; // Apply shake animation
-              setTimeout(() => {
-                icon.style.animation = 'none'; // Remove animation after it completes
-              }, 500); // 0.5 seconds
             }
-        
-            // Shake the icon every 3 seconds
-            setInterval(shakeIcon, 3000);
-        
-            // Function to move the icon away from the mouse
-            function moveIcon(event) {
-              const mouseX = event.clientX;
-              const mouseY = event.clientY;
-        
-              // Calculate the direction vector from the mouse to the icon
-              let deltaX = posX - mouseX;
-              let deltaY = posY - mouseY;
-        
-              // Normalize the direction vector
-              const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-              deltaX = (deltaX / distance) * speed;
-              deltaY = (deltaY / distance) * speed;
-        
-              // Update the icon's position
-              posX += deltaX;
-              posY += deltaY;
-        
-              // Ensure the icon stays within the window boundaries with a safe margin
-              const iconRect = icon.getBoundingClientRect();
-              const margin = 50; // Safe margin from the edges
-              const maxX = window.innerWidth - iconRect.width - margin;
-              const maxY = window.innerHeight - iconRect.height - margin;
-        
-              if (posX < margin) posX = margin;
-              if (posX > maxX) posX = maxX;
-              if (posY < margin) posY = margin;
-              if (posY > maxY) posY = maxY;
-        
-              // Apply the new position
-              icon.style.left = `${posX}px`;
-              icon.style.top = `${posY}px`;
-            }
-        
-            // Function to show the pop-up when the icon is clicked
-            function showPopup() {
-              popup.style.display = 'block';
-            }
-        
-            // Function to reset the game
-            function resetGame() {
-              popup.style.display = 'none';
-              posX = window.innerWidth / 2;
-              posY = window.innerHeight / 2;
-              icon.style.left = `${posX}px`;
-              icon.style.top = `${posY}px`;
-            }
-        
-            // Add event listener for mouse movement
-            container.addEventListener('mousemove', moveIcon);
-        
-            // Add event listener for clicking the icon
-            icon.addEventListener('click', showPopup);
-          </script>
+        }
+
+        // Function to show the pop-up when the icon is clicked
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block'; // Show the pop-up
+
+        }
+
+
+
+        // Function to reset the game
+        function resetGame() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+            posX = window.innerWidth - 75; // Reset to initial position
+            posY = 20;
+            icon.style.left = `${posX}px`;
+            icon.style.top = `${posY}px`;
+        }
+
+        // Add event listener for mouse movement
+        container.addEventListener('mousemove', moveIcon);
+
+        // Add event listener for clicking the icon
+        icon.addEventListener('click', showPopup);
+        </script>
 
 
         <!-- Search Bar on the Right -->
