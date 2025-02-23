@@ -23,6 +23,7 @@ body {
     max-width: 100%; /* Prevents overflow */
     left: 50%;
     transform: translateX(-50%);
+    z-index: 100;
 }
 
 #nav-links:not(.hidden) {
@@ -65,11 +66,12 @@ body {
   }
 
   #cutey {
-    position: absolute;
+    position: fixed;
     font-size: 20px;
     cursor: pointer;
     color: lightblue;
     user-select: none;
+    z-index: 200;
   }
 
   /* Shake animation */
@@ -107,26 +109,48 @@ body {
 
 #cat-container {
   position: absolute;
-  top: 100%;
-  right: 50px; 
-  z-index: 1000;
-  animation: slideIn 2s forwards, slideOut 2s 4s forwards; /* Slide in, then fade out */
-  opacity: 0; /* Start hidden */
-  display: none; /* Completely hide initially */
-  transform: rotate(-180deg);
-  height: 10%;
-  width: 10%;
-
+  top: 100%; /* Position directly below the nav bar */
+  right: 5%;
+  transform: translateY(-70%); /* Pull up to show partial cat */
+  z-index: -1;
+  height: auto;
+  pointer-events: none; /* Allow clicks through the cat */
+  display: none;
 }
 
+#cat-head img {
+  width: 80px; 
+  height: auto;
+  transform: rotate(180deg); 
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
 
+nav {
+  position: relative; /* Create stacking context */
+  z-index: 100; /* Ensure nav stays above cat */
+  background: inherit; /* Needed for proper coverage */
+}
 
-/* Cat Head */
-#cat-head {
-  font-size: 1rem; 
-  position: fixed;
+@keyframes slideIn {
+  from {
+    transform: translateY(-70%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-30%);
+    opacity: 1;
+  }
+}
 
-
+@keyframes slideOut {
+  from {
+    transform: translateY(-30%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-70%);
+    opacity: 0;
+  }
 }
 
 /* Speech Bubble */
@@ -144,6 +168,7 @@ body {
   white-space: nowrap;
   animation: fadeIn 0.5s 1s forwards; /* Fade in after the cat slides in */
   opacity: 0; /* Start hidden */
+
 }
 
 /* Speech Bubble Arrow */
@@ -155,32 +180,9 @@ body {
   transform: translateX(-50%);
   border: 4px solid transparent;
   border-top-color: #fff;
-  transform: rotate(180deg);
 }
 
-/* Slide-in Animation */
-@keyframes slideIn {
-  from {
-    top: 100%; /* Start from under nav bar*/
-    opacity: 0;
-  }
-  to {
-    top: 120%; /* Slide to the final position */
-    opacity: 1;
-  }
-}
 
-/* Slide-out Animation */
-@keyframes slideOut {
-  from {
-    top: 120%; /* Start from the final position */
-    opacity: 1;
-  }
-  to {
-    top: 100%; /* Move uner nav bar */
-    opacity: 0;
-  }
-}
 
 /* Class to trigger slide-in animation */
 .slide-in {
@@ -191,3 +193,5 @@ body {
 .slide-out {
   animation: slideOut 1s forwards;
 }
+
+
