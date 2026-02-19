@@ -318,53 +318,55 @@
                 
                 <!-- Development & Programming -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Development & Programming</h3>
+                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Software Development</h3>
                     <ul class="space-y-3">
                         <li>
                             <strong class="block text-gray-100">Languages</strong>
-                            Python, Java, JavaScript, C++, Rust, Haskell, Bash, SQL, PHP, TypeScript,PowerShell, Elixir, Ruby, Prolog, OpenGL
+                            Python, Java, C++, C#, JavaScript (ES6+), TypeScript, Swift, SQL
+
                         </li>
                         <li>
-                            <strong class="block text-gray-100">Frameworks</strong>
-                            React, Node.js, Flask, Vue, Bootstrap, Angular, JUnit, PowerBI, PowerApps
+                            <strong class="block text-gray-100">Full Stack</strong>
+                            React, Tailwind CSS, HTML5, CSS3, Node.js, Flask, RESTful API Design
+
                         </li>
                         <li>
-                            <strong class="block text-gray-100">Web & Mobile</strong>
-                            React Native, HTML5, CSS3, Tailwind CSS
+                            <strong class="block text-gray-100">Mobile</strong>
+                            SwiftUI, React Native, iOS Development
                         </li>
                     </ul>
                 </div>
 
                 <!-- Systems, DevOps & Security -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Systems & Security</h3>
+                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Systems & DevOps</h3>
                     <ul class="space-y-3">
                         <li>
-                            <strong class="block text-gray-100">Databases & Cloud</strong>
-                            MySQL, Docker, UNIX, VM, SCCM, Microsoft Intune
+                            <strong class="block text-gray-100">Platforms</strong>
+                            Linux, Docker
                         </li>
                         <li>
-                            <strong class="block text-gray-100">DevOps & Tools</strong>
-                            Git, Linux, Shell Scripting, VS Code, Visual Studio, PyCharm, Eclipse
+                            <strong class="block text-gray-100">Version Control & Automation</strong>
+                            Git, Bash / Shell Scripting, PowerShell
                         </li>
                         <li>
-                            <strong class="block text-gray-100">Security</strong>
-                            API Security, Cryptography, AES/RSA Encryption, Patch Deployment, 
+                            <strong class="block text-gray-100">Enterprise Tools</strong>
+                            Microsoft Intune, SCCM, Power BI, Power Apps
                         </li>
                     </ul>
                 </div>
 
                 <!-- Workflow & Project Management -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-transform hover:scale-105">
-                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Workflow & Collaboration</h3>
+                    <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Security & Collaboration</h3>
                     <ul class="space-y-3">
                         <li>
-                            <strong class="block text-gray-100">Methodologies</strong>
-                            Scrum, Agile, Jira, Trello, Figma
+                            <strong class="block text-gray-100">Security</strong>
+                            OAuth 2.0, Secure API Development, Encryption (AES, RSA), Patch Deployment
                         </li>
                         <li>
-                            <strong class="block text-gray-100">Soft Skills</strong>
-                            Problem-Solving, Mentorship, Team Collaboration, Adaptability
+                            <strong class="block text-gray-100">Workflow</strong>
+                            Agile / Scrum, Jira, Trello, Figma
                         </li>
                     </ul>
                 </div>
@@ -421,6 +423,50 @@
                     }
                 }
             </script>
+
+            <!--Project Forget Me Not-->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
+                <!-- Clickable Project Title -->
+                <h3 onclick="toggleDetails(this)" class="text-xl font-semibold cursor-pointer">Forget Me Not</h3>
+                <!-- Default Project Info -->
+                <div class="project-info fade-slide active">
+                    <p class="text-gray-300 mt-2">Feb 2026 | Swift, SwiftUI, iOS</p>
+                    <a href="https://github.com/shaghayegh0/Forget-me-not" class="text-blue-400 hover:underline">Check it Out on GitHub</a>
+                </div>
+                <!-- Bullet Points (Initially Hidden) -->
+                <div class="project-details fade-slide">
+                    <ul class="text-sm space-y-1 pl-4 mt-3">
+                        <li>🌸 Built a full-stack iOS vocabulary journal app in SwiftUI with persistent local storage, allowing users to save words with type, gender, definitions in English and Farsi, and example sentences.
+                        </li>
+                        <li>🎨 Designed a custom dark-mode UI with colour-coded cards per grammatical type (noun, verb, adjective, etc.), gender badges, and a programmatically generated app icon using Python and Pillow.
+                        </li>
+                        <li>✏️ Implemented full CRUD functionality — add, view, edit, and delete words — with a floating action button, confirmation alerts, and smart field visibility that hides empty entries.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--Project Spotify Playlist Bot-->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
+                <!-- Clickable Project Title -->
+                <h3 onclick="toggleDetails(this)" class="text-xl font-semibold cursor-pointer">Spotify Playlist Telegram Bot</h3>
+                <!-- Default Project Info -->
+                <div class="project-info fade-slide active">
+                    <p class="text-gray-300 mt-2">Feb 2026 | Python, Spotify API, Telegram API</p>
+                    <a href="https://github.com/shaghayegh0/Spotify-Playlist-Telegram-Bot" class="text-blue-400 hover:underline">Check it Out on GitHub</a>
+                </div>
+                <!-- Bullet Points (Initially Hidden) -->
+                <div class="project-details fade-slide">
+                    <ul class="text-sm space-y-1 pl-4 mt-3">
+                        <li>🎵 Built a real-time Spotify playlist monitor that detects newly added songs using track ID comparison and sends formatted Telegram notifications with song details, album info, and direct Spotify links.
+                        </li>
+                        <li>🔐 Implemented Spotify OAuth 2.0 authentication and engineered robust date parsing to handle inconsistent API response formats, with bulletproof change detection that correctly handles simultaneous additions and removals.
+                        </li>
+                        <li>☁️ Designed for local and cloud deployment (PythonAnywhere, Railway, Heroku) with modular architecture including dedicated scripts for auth, debugging, and diagnostics.
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             <!--Project StarWars-->
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg transition duration-300 hover:scale-105">
